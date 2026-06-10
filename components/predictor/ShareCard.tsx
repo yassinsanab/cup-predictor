@@ -34,7 +34,8 @@ const CONTENT = 1710;
 const H_BR = TOP + 8 * LEAF + 8; // 550
 const xL = [0, 190, 380, 570];
 const xCenter = 760;
-const xR = [990, 1180, 1370, 1560]; // SF, QF, R16, R32
+const xR = [990, 1180, 1370, 1560]; // x by distance from centre: SF, QF, R16, R32
+const xRr = [...xR].reverse(); // x by round index (R_IDS order): R32(far), R16, QF, SF(centre)
 
 const yR32 = Array.from({ length: 8 }, (_, i) => TOP + i * LEAF + LEAF / 2);
 const yR16 = [0, 1, 2, 3].map((k) => (yR32[2 * k] + yR32[2 * k + 1]) / 2);
@@ -98,10 +99,10 @@ export const ShareCard = forwardRef<HTMLDivElement, Props>(function ShareCard(
     }
   };
   addSide(L_IDS, xL, true);
-  addSide(R_IDS, xR, false);
+  addSide(R_IDS, xRr, false);
   // SF -> centre
   segs.push({ x1: xL[3] + W, y1: ySF, x2: xCenter, y2: ySF, hl: advanced(101, 104) });
-  segs.push({ x1: xR[0], y1: ySF, x2: xCenter + Wc, y2: ySF, hl: advanced(102, 104) });
+  segs.push({ x1: xRr[3], y1: ySF, x2: xCenter + Wc, y2: ySF, hl: advanced(102, 104) });
 
   const labels: { x: number; t: string }[] = [
     { x: xL[0] + W / 2, t: "R32" },
@@ -117,7 +118,7 @@ export const ShareCard = forwardRef<HTMLDivElement, Props>(function ShareCard(
 
   const boxes: { x: number; y: number; id: number }[] = [];
   L_IDS.forEach((round, L) => round.forEach((id, k) => boxes.push({ x: xL[L], y: yByRound[L][k], id })));
-  R_IDS.forEach((round, L) => round.forEach((id, k) => boxes.push({ x: xR[L], y: yByRound[L][k], id })));
+  R_IDS.forEach((round, L) => round.forEach((id, k) => boxes.push({ x: xRr[L], y: yByRound[L][k], id })));
 
   return (
     <div ref={ref} style={{ width: CONTENT + 64, background: C.paper, padding: 32, boxSizing: "border-box", fontFamily: FONT }}>
