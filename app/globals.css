@@ -28,10 +28,6 @@
   /* Semantic / data accents — used ONLY on flags + result states, never as UI chrome */
   --flag-red: #d63d34;
   --flag-blue: #2c66d6;
-
-  /* Body font: system stack (fast, no extra payload). Display loaded via next/font. */
-  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, "Noto Sans", sans-serif;
 }
 
 * {
@@ -46,15 +42,22 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-body);
+  font-family: var(--font-body), system-ui, sans-serif;
   font-feature-settings: "tnum" 1; /* tabular numerals everywhere — scoreboards don't jitter */
   -webkit-font-smoothing: antialiased;
 }
 
-/* Display utility — the one characterful face that stops it reading as AI-built */
+/* Condensed display face — athletic, editorial, the opposite of a default sans */
 .font-display {
-  font-family: var(--font-display), system-ui, sans-serif;
-  letter-spacing: 0.005em;
+  font-family: var(--font-display), "Arial Narrow", system-ui, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* Editorial uppercase kicker/label */
+.kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 600;
 }
 
 /* Respect users who don't want motion */

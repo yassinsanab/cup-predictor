@@ -32,12 +32,12 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="hidden items-center gap-8 md:flex">
           {nav.map((n) => (
             <Link
               key={n.href}
               href={n.href}
-              className="text-sm font-medium text-ink-soft transition-colors hover:text-ink"
+              className="kicker text-[11px] text-ink-soft transition-colors hover:text-ink"
             >
               {n.label}
             </Link>

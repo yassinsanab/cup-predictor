@@ -28,8 +28,8 @@ const config: Config = {
         body: ["var(--font-body)"],
       },
       borderRadius: {
-        btn: "13px",
-        card: "16px",
+        btn: "9px",
+        card: "11px",
       },
       boxShadow: {
         // Two shadows, reused everywhere (token discipline)
