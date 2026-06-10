@@ -236,7 +236,7 @@ export const ShareCard = forwardRef<HTMLDivElement, Props>(function ShareCard(
         <span style={{ fontSize: 12, color: C.muted }}>Independent fan project · not affiliated with FIFA.</span>
         <span style={{ display: "inline-flex", alignItems: "center", gap: 9, background: C.ink, color: C.paper, borderRadius: 999, padding: "8px 18px", fontSize: 13, fontWeight: 700 }}>
           <span style={{ color: C.gold }}>Cup Predictor &rsquo;26</span>
-          <span style={{ opacity: 0.55 }}>cup-predictor.vercel.app</span>
+          <span style={{ opacity: 0.55 }}>playmatchpool.com</span>
         </span>
       </div>
     </div>

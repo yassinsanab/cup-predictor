@@ -96,6 +96,100 @@ export const POSTS: Post[] = [
       { t: "p", text: "Our predictor does the fiddly bits for you: it applies FIFA's official third-place allocation table, auto-clears picks that no longer make sense when you change an earlier result, and exports a clean shareable image of your whole bracket." },
     ],
   },
+  {
+    slug: "world-cup-2026-host-cities-and-stadiums",
+    title: "World Cup 2026 host cities and stadiums: all 16 venues",
+    description:
+      "The 2026 World Cup is spread across 16 cities in the United States, Canada and Mexico. Here's every host city and where the biggest matches are played.",
+    date: "2026-06-07",
+    body: [
+      { t: "p", text: "The 2026 World Cup is the first staged across three countries, and the first with 16 host cities. Eleven are in the United States, two in Canada and three in Mexico, stretching from Vancouver in the north-west to Miami in the south-east." },
+      { t: "h2", text: "United States (11)" },
+      { t: "ul", items: ["Atlanta", "Boston (Foxborough)", "Dallas (Arlington)", "Houston", "Kansas City", "Los Angeles (Inglewood)", "Miami (Miami Gardens)", "New York / New Jersey (East Rutherford)", "Philadelphia", "San Francisco Bay Area (Santa Clara)", "Seattle"] },
+      { t: "h2", text: "Canada (2)" },
+      { t: "ul", items: ["Toronto", "Vancouver"] },
+      { t: "h2", text: "Mexico (3)" },
+      { t: "ul", items: ["Mexico City", "Guadalajara", "Monterrey"] },
+      { t: "p", text: "The tournament opens in Mexico City and the final is played at MetLife Stadium in New York/New Jersey on 19 July 2026. Follow every fixture on the scores page, and call the whole thing on the predictor." },
+    ],
+  },
+  {
+    slug: "world-cup-2026-schedule-key-dates",
+    title: "World Cup 2026 schedule: key dates from kickoff to the final",
+    description:
+      "When the 2026 World Cup starts, when the knockouts begin, and the date of the final — the key dates across all 104 matches.",
+    date: "2026-06-07",
+    body: [
+      { t: "p", text: "The 2026 World Cup runs from 11 June to 19 July 2026 — at roughly 39 days and 104 matches, the longest and largest in the tournament's history." },
+      { t: "h2", text: "Group stage" },
+      { t: "p", text: "The group stage kicks off on 11 June with the host nations among the headline acts. Each of the 48 teams plays three group games over the opening two and a half weeks, with the final round of group matches kicking off simultaneously to keep things fair." },
+      { t: "h2", text: "Knockouts" },
+      { t: "p", text: "Then it's straight knockout football through these rounds:" },
+      { t: "ul", items: ["Round of 32", "Round of 16", "Quarter-finals", "Semi-finals", "Third-place play-off", "Final — 19 July 2026, MetLife Stadium, New York/New Jersey"] },
+      { t: "p", text: "Times for every match, in your local timezone, are on the scores page. Lock in your picks before kickoff on the predictor." },
+    ],
+  },
+  {
+    slug: "world-cup-2026-favourites",
+    title: "World Cup 2026 favourites: the teams most tipped to win",
+    description:
+      "Who are the favourites for the 2026 World Cup? The contenders most commonly tipped — from holders Argentina to France, Brazil, Spain and England.",
+    date: "2026-06-06",
+    body: [
+      { t: "p", text: "Picking a World Cup winner is a mug's game — but some teams start every tournament among the favourites. Here are the sides most commonly tipped for 2026, with the usual caveat that football rarely reads the script." },
+      { t: "h2", text: "The usual contenders" },
+      { t: "p", text: "Holders Argentina arrive as reigning champions. France, beaten finalists in 2022, have the depth to go all the way again. Brazil are perennial contenders, Spain and England carry strong squads, and Germany, Portugal and the Netherlands are never far away." },
+      { t: "h2", text: "Home advantage" },
+      { t: "p", text: "Co-hosts the United States, Mexico and Canada won't travel, will play in front of huge home crowds, and know the conditions. Home advantage has lifted host nations deep into tournaments before." },
+      { t: "h2", text: "Room for surprises" },
+      { t: "p", text: "With 48 teams and a new Round of 32, there are more games and more chances for an upset than ever. Think you can spot the dark horse? Build your bracket and back your call." },
+    ],
+  },
+  {
+    slug: "world-cup-2026-group-of-death",
+    title: "World Cup 2026 Group of Death: which group is the toughest?",
+    description:
+      "Every World Cup has a 'Group of Death'. Here are the 2026 groups with the most punishing line-ups — and why they qualify.",
+    date: "2026-06-06",
+    body: [
+      { t: "p", text: "The 'Group of Death' is the group where too many strong teams are drawn together and someone good is guaranteed to go home early. With only the top two assured of progress, the 2026 draw has a few contenders." },
+      { t: "h2", text: "Group I — France, Senegal, Norway, Iraq" },
+      { t: "p", text: "The standout candidate. France are among the favourites, Senegal are a powerhouse with real pedigree, and Norway bring Erling Haaland's goals. Two of those three miss out on automatic qualification." },
+      { t: "h2", text: "Group L — England, Croatia, Panama, Ghana" },
+      { t: "p", text: "England against the 2018 finalists Croatia is a heavyweight tie, with Ghana a dangerous third side." },
+      { t: "h2", text: "Group G — Belgium, Iran, Egypt, New Zealand" },
+      { t: "p", text: "Belgium and an Egypt side built around Mohamed Salah make this trickier than it first looks." },
+      { t: "p", text: "Disagree on which is toughest? Rank every group your way on the predictor and see how the bracket falls out." },
+    ],
+  },
+  {
+    slug: "world-cup-2026-group-tiebreakers-explained",
+    title: "How World Cup 2026 group standings and tiebreakers work",
+    description:
+      "Points, goal difference, head-to-head: the exact order of tiebreakers used to rank teams in the 2026 World Cup group stage.",
+    date: "2026-06-05",
+    body: [
+      { t: "p", text: "Group games are worth three points for a win and one for a draw. The top two in each group advance automatically, and the eight best third-placed teams join them — so even the order of teams level on points matters." },
+      { t: "h2", text: "The tiebreaker order" },
+      { t: "p", text: "When two or more teams finish level on points, they're separated using these criteria, applied in order:" },
+      { t: "ul", items: ["Goal difference across all group matches", "Goals scored across all group matches", "Points in the matches between the tied teams", "Goal difference in the matches between the tied teams", "Goals scored in the matches between the tied teams", "Fair-play points (fewer yellow and red cards)", "Drawing of lots"] },
+      { t: "p", text: "That's why goal difference is so precious late in the group stage — and why ranking the third-placed teams comes down to the same fine margins. Put your own order in on the predictor." },
+    ],
+  },
+  {
+    slug: "what-is-new-world-cup-2026",
+    title: "What's new at World Cup 2026 compared to 2022",
+    description:
+      "From 32 to 48 teams, a brand-new Round of 32, and three host nations — everything that's different about the 2026 World Cup.",
+    date: "2026-06-05",
+    body: [
+      { t: "p", text: "If your mental model of the World Cup is still Qatar 2022, 2026 will need some recalibrating. This is the biggest format change in decades." },
+      { t: "ul", items: ["48 teams instead of 32", "104 matches instead of 64", "12 groups of four instead of 8", "A brand-new Round of 32 knockout round", "Three host nations — the USA, Canada and Mexico — for the first time", "The longest World Cup ever, at around 39 days"] },
+      { t: "h2", text: "Why it matters" },
+      { t: "p", text: "More nations means more first-timers and more unpredictability, and the new Round of 32 means finishing third in your group can still be enough. It also means a longer, denser schedule for fans to follow." },
+      { t: "p", text: "New to the format? The full explainer walks through how teams advance — then put it into practice on the predictor." },
+    ],
+  },
 ];
 
 export function getPost(slug: string): Post | undefined {

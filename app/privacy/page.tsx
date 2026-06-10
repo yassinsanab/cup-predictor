@@ -32,12 +32,20 @@ export default function PrivacyPage() {
           that public data source.
         </p>
 
+        <h2 className="font-display text-lg font-extrabold text-ink">Analytics</h2>
+        <p>
+          We use Google Analytics (gtag.js) to understand aggregate, anonymised usage —
+          which pages are visited, approximate region, and device type — so we can improve
+          the site. Google may set cookies to do this. You can opt out through your browser
+          settings or Google&apos;s own opt-out tools. We do not run advertising at this
+          time; if that changes, we&apos;ll update this page.
+        </p>
+
         <h2 className="font-display text-lg font-extrabold text-ink">Hosting</h2>
         <p>
           The site is hosted on Vercel, which may keep standard technical logs (such as IP
           address and request information) for security and reliability, as described in
-          Vercel&apos;s own privacy policy. We do not currently run advertising or
-          third-party analytics. If that changes, we&apos;ll update this page.
+          Vercel&apos;s own privacy policy.
         </p>
 
         <h2 className="font-display text-lg font-extrabold text-ink">Contact</h2>

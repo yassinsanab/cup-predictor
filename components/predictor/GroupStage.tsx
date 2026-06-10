@@ -149,7 +149,7 @@ export function GroupStage({ onGoToKnockout }: { onGoToKnockout?: () => void }) 
         </div>
         <div className="export-only mt-4 flex items-center justify-between gap-3 border-t border-line pt-3 text-[11px] text-muted">
           <span className="font-display font-extrabold text-ink">Cup Predictor &rsquo;26</span>
-          <span>cup-predictor.vercel.app · Independent fan project, not affiliated with FIFA</span>
+          <span>playmatchpool.com · Independent fan project, not affiliated with FIFA</span>
         </div>
       </div>
 
