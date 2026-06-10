@@ -120,7 +120,7 @@ export const ShareCard = forwardRef<HTMLDivElement, Props>(function ShareCard(
   R_IDS.forEach((round, L) => round.forEach((id, k) => boxes.push({ x: xR[L], y: yByRound[L][k], id })));
 
   return (
-    <div style={{ width: CONTENT + 64, background: C.paper, padding: 32, boxSizing: "border-box", fontFamily: FONT }}>
+    <div ref={ref} style={{ width: CONTENT + 64, background: C.paper, padding: 32, boxSizing: "border-box", fontFamily: FONT }}>
       {/* Slim brand bar */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 18 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -154,15 +154,10 @@ export const ShareCard = forwardRef<HTMLDivElement, Props>(function ShareCard(
           </div>
         ))}
 
-        {/* connectors */}
-        <svg width={CONTENT} height={H_BR} style={{ position: "absolute", inset: 0 }}>
-          {segs.filter((s) => !s.hl).map((s, i) => (
-            <line key={`n${i}`} x1={s.x1} y1={s.y1} x2={s.x2} y2={s.y2} stroke={C.conn} strokeWidth={1.6} />
-          ))}
-          {segs.filter((s) => s.hl).map((s, i) => (
-            <line key={`h${i}`} x1={s.x1} y1={s.y1} x2={s.x2} y2={s.y2} stroke={C.pitch} strokeWidth={2.4} />
-          ))}
-        </svg>
+        {/* connectors (div-based for reliable image export) */}
+        {[...segs.filter((s) => !s.hl), ...segs.filter((s) => s.hl)].map((s, i) => (
+          <Conn key={i} {...s} />
+        ))}
 
         {/* centre champion piece */}
         <div
@@ -246,6 +241,16 @@ export const ShareCard = forwardRef<HTMLDivElement, Props>(function ShareCard(
     </div>
   );
 });
+
+function Conn({ x1, y1, x2, y2, hl }: Seg) {
+  const t = hl ? 2.4 : 1.6;
+  const color = hl ? C.pitch : C.conn;
+  const horizontal = y1 === y2;
+  const style: React.CSSProperties = horizontal
+    ? { position: "absolute", left: Math.min(x1, x2), top: y1 - t / 2, width: Math.abs(x2 - x1), height: t, background: color }
+    : { position: "absolute", left: x1 - t / 2, top: Math.min(y1, y2), width: t, height: Math.abs(y2 - y1), background: color };
+  return <div style={style} />;
+}
 
 function Box({ x, y, r }: { x: number; y: number; r: MatchResult | undefined }) {
   const home = r?.home ?? null;

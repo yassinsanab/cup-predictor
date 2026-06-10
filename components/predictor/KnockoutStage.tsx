@@ -257,8 +257,10 @@ export function KnockoutStage() {
         </div>
       </div>
 
-      {/* Off-screen composed share image (captured by "Save all as image") */}
-      <div aria-hidden style={{ position: "fixed", left: -100000, top: 0, pointerEvents: "none" }}>
+      {/* Off-screen composed share image (captured by "Save all as image").
+          Clipped 0x0 at the origin — invisible, but at real coordinates so
+          html-to-image can capture it (far-off-screen nodes hang the capture). */}
+      <div aria-hidden style={{ position: "fixed", left: 0, top: 0, width: 0, height: 0, overflow: "hidden", pointerEvents: "none", zIndex: -1 }}>
         <ShareCard ref={shareRef} order={order} thirds={thirds} results={built.results} />
       </div>
     </div>
