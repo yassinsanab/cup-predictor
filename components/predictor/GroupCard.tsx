@@ -43,7 +43,7 @@ export function GroupCard({
             <span className="min-w-0 flex-1 truncate text-sm font-medium text-ink">
               {t.name}
             </span>
-            <span className="flex shrink-0 gap-1">
+            <span className="no-export flex shrink-0 gap-1">
               <button
                 type="button"
                 aria-label={`Move ${t.name} up`}

@@ -31,7 +31,7 @@ export function PredictTabs() {
         </div>
       </div>
 
-      {tab === "group" ? <GroupStage /> : <KnockoutStage />}
+      {tab === "group" ? <GroupStage onGoToKnockout={() => setTab("knockout")} /> : <KnockoutStage />}
     </>
   );
 }

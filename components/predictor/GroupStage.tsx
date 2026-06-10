@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { GROUPS } from "@/lib/teams";
 import { GROUP_ORDER_KEY, defaultOrder, type Order } from "@/lib/prediction";
 import { GroupCard } from "./GroupCard";
 import { Button } from "@/components/ui/Button";
+import { saveNodeAsPng } from "@/lib/exportImage";
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -15,10 +16,20 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-export function GroupStage() {
+export function GroupStage({ onGoToKnockout }: { onGoToKnockout?: () => void }) {
   const [order, setOrder] = useState<Order>(defaultOrder);
   const [touched, setTouched] = useState<Set<string>>(new Set());
   const [mounted, setMounted] = useState(false);
+  const gridRef = useRef<HTMLDivElement | null>(null);
+
+  async function saveImage() {
+    if (!gridRef.current) return;
+    try {
+      await saveNodeAsPng(gridRef.current, "cup-predictor-groups.png");
+    } catch {
+      alert("Could not generate the image — please try again.");
+    }
+  }
 
   // Load any saved prediction once on mount (guarded to avoid SSR mismatch).
   useEffect(() => {
@@ -95,36 +106,51 @@ export function GroupStage() {
               groups set · top 2 + 8 best 3rd-place advance
             </div>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center justify-end gap-2">
             <Button variant="ghost" size="md" onClick={shuffleAll}>
               Shuffle
             </Button>
-            <Button
-              variant="gold"
-              size="md"
-              arrow
-              onClick={() => {
-                document
-                  .getElementById("save-cta")
-                  ?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              {done ? "Save & share" : "Finish"}
+            <Button variant="ghost" size="md" onClick={saveImage}>
+              Save image
             </Button>
+            {done ? (
+              <Button variant="gold" size="md" arrow onClick={onGoToKnockout}>
+                Go to Knockout
+              </Button>
+            ) : (
+              <Button
+                variant="gold"
+                size="md"
+                arrow
+                onClick={() => {
+                  document
+                    .getElementById("save-cta")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                Finish
+              </Button>
+            )}
           </div>
         </div>
       </div>
 
-      {/* Group grid */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {GROUPS.map((g) => (
-          <GroupCard
-            key={g.id}
-            id={g.id}
-            teams={order[g.id]}
-            onMove={(i, dir) => move(g.id, i, dir)}
-          />
-        ))}
+      {/* Group grid (export target) */}
+      <div ref={gridRef}>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {GROUPS.map((g) => (
+            <GroupCard
+              key={g.id}
+              id={g.id}
+              teams={order[g.id]}
+              onMove={(i, dir) => move(g.id, i, dir)}
+            />
+          ))}
+        </div>
+        <div className="export-only mt-4 flex items-center justify-between gap-3 border-t border-line pt-3 text-[11px] text-muted">
+          <span className="font-display font-extrabold text-ink">Cup Predictor &rsquo;26</span>
+          <span>cup-predictor.vercel.app · Independent fan project, not affiliated with FIFA</span>
+        </div>
       </div>
 
       {/* Legend */}
@@ -141,14 +167,20 @@ export function GroupStage() {
         className="mt-10 flex flex-col items-center gap-3 rounded-card border border-line bg-card px-6 py-10 text-center"
       >
         <div className="font-display text-xl font-extrabold text-ink">
-          Lock your bracket
+          {done ? "Groups locked in" : "Rank all 12 groups"}
         </div>
         <p className="max-w-md text-sm text-ink-soft">
-          Save your group-stage prediction, then continue to the knockout
-          bracket. Your picks are kept on this device until kickoff.
+          {done
+            ? "Save your group prediction as an image, or head into the knockout bracket."
+            : "Set the order in every group to unlock the knockout bracket. Your picks are kept on this device until kickoff."}
         </p>
-        <div className="mt-2 flex gap-3">
-          <Button variant="primary" arrow>Save my prediction</Button>
+        <div className="mt-2 flex flex-wrap justify-center gap-3">
+          <Button variant="gold" onClick={saveImage}>Save image</Button>
+          {done && (
+            <Button variant="primary" arrow onClick={onGoToKnockout}>
+              Continue to Knockout
+            </Button>
+          )}
           <Button variant="ghost" onClick={reset}>Reset</Button>
         </div>
       </div>
