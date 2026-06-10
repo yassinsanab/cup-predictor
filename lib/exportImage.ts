@@ -3,6 +3,12 @@
 
 export async function saveNodeAsPng(node: HTMLElement, filename: string): Promise<void> {
   const { toPng } = await import("html-to-image");
+  // Ensure web fonts are ready so text embeds correctly.
+  try {
+    await (document as Document & { fonts?: { ready?: Promise<unknown> } }).fonts?.ready;
+  } catch {
+    /* ignore */
+  }
   // Reveal any .export-only watermark while capturing, then revert.
   node.classList.add("exporting");
   try {

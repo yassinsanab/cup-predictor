@@ -12,6 +12,7 @@ import {
 } from "@/lib/bracket";
 import { Button } from "@/components/ui/Button";
 import { saveNodeAsPng } from "@/lib/exportImage";
+import { ShareCard } from "./ShareCard";
 
 const ROUND_ORDER: Round[] = ["R32", "R16", "QF", "SF", "3P", "F"];
 const ALL_GROUP_IDS = GROUPS.map((g) => g.id);
@@ -32,6 +33,7 @@ export function KnockoutStage() {
   const [mounted, setMounted] = useState(false);
 
   const allRef = useRef<HTMLDivElement | null>(null);
+  const shareRef = useRef<HTMLDivElement | null>(null);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
   useEffect(() => {
@@ -144,7 +146,7 @@ export function KnockoutStage() {
         </div>
         <div className="flex gap-2">
           <MiniBtn onClick={shuffleAll}><ShuffleIcon /> Shuffle all</MiniBtn>
-          <Button variant="gold" size="md" onClick={() => saveImage(allRef.current, "cup-predictor-bracket.png")}>
+          <Button variant="gold" size="md" onClick={() => saveImage(shareRef.current, "cup-predictor-bracket.png")}>
             Save all as image
           </Button>
         </div>
@@ -250,9 +252,14 @@ export function KnockoutStage() {
             : "Work down to the final to crown a winner, or hit Shuffle all. Picks are kept on this device."}
         </p>
         <div className="mt-2 flex flex-wrap justify-center gap-3">
-          <Button variant="gold" onClick={() => saveImage(allRef.current, "cup-predictor-bracket.png")}>Save all as image</Button>
+          <Button variant="gold" onClick={() => saveImage(shareRef.current, "cup-predictor-bracket.png")}>Save all as image</Button>
           <Button variant="ghost" onClick={reset}>Reset knockouts</Button>
         </div>
+      </div>
+
+      {/* Off-screen composed share image (captured by "Save all as image") */}
+      <div aria-hidden style={{ position: "fixed", left: -100000, top: 0, pointerEvents: "none" }}>
+        <ShareCard ref={shareRef} order={order} thirds={thirds} results={built.results} />
       </div>
     </div>
   );
