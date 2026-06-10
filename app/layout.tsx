@@ -22,7 +22,7 @@ const body = Barlow({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://cup-predictor.example"),
+  metadataBase: new URL("https://www.playmatchpool.com"),
   title: {
     default: "Cup Predictor '26 — World Cup 2026 Bracket Predictor",
     template: "%s · Cup Predictor '26",
@@ -36,6 +36,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: { card: "summary_large_image" },
+  verification: { google: "0vmu5E-9T3Ildn97UoRdaJnZ4eaKEvZvaxEyXGIkUas" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
