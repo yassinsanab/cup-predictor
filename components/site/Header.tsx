@@ -2,9 +2,9 @@ import Link from "next/link";
 
 const nav = [
   { label: "Predict", href: "/predict" },
-  { label: "Leaderboard", href: "/leaderboard" },
-  { label: "Leagues", href: "/leagues" },
-  { label: "Stats", href: "/stats" },
+  { label: "Scores", href: "/scores" },
+  { label: "Blog", href: "/blog" },
+  { label: "About", href: "/about" },
 ];
 
 export function Header() {

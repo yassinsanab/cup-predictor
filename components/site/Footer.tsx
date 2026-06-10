@@ -10,17 +10,16 @@ export function Footer() {
               Cup Predictor<span className="text-gold">&apos;26</span>
             </div>
             <p className="mt-3 text-sm leading-relaxed">
-              Build your bracket for the 2026 tournament, compete on the
-              leaderboard, and challenge friends in private leagues. No sign-up,
-              done in two minutes.
+              Build and share your full 2026 bracket — group order, the eight
+              third-placed qualifiers, and every knockout tie. No sign-up, done
+              in two minutes.
             </p>
           </div>
 
           <nav className="grid grid-cols-2 gap-x-12 gap-y-2 text-sm">
             <Link href="/predict" className="hover:text-white">Predict</Link>
-            <Link href="/leaderboard" className="hover:text-white">Leaderboard</Link>
-            <Link href="/leagues" className="hover:text-white">Leagues</Link>
-            <Link href="/stats" className="hover:text-white">Stats</Link>
+            <Link href="/scores" className="hover:text-white">Scores</Link>
+            <Link href="/blog" className="hover:text-white">Blog</Link>
             <Link href="/about" className="hover:text-white">About</Link>
             <Link href="/privacy" className="hover:text-white">Privacy</Link>
           </nav>
