@@ -1,19 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { GROUPS, type Team } from "@/lib/teams";
+import { GROUPS } from "@/lib/teams";
+import { GROUP_ORDER_KEY, defaultOrder, type Order } from "@/lib/prediction";
 import { GroupCard } from "./GroupCard";
 import { Button } from "@/components/ui/Button";
-
-type Order = Record<string, Team[]>;
-
-const STORAGE_KEY = "cp26.groupOrder.v1";
-
-function initialOrder(): Order {
-  const o: Order = {};
-  for (const g of GROUPS) o[g.id] = [...g.teams];
-  return o;
-}
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -25,7 +16,7 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 export function GroupStage() {
-  const [order, setOrder] = useState<Order>(initialOrder);
+  const [order, setOrder] = useState<Order>(defaultOrder);
   const [touched, setTouched] = useState<Set<string>>(new Set());
   const [mounted, setMounted] = useState(false);
 
@@ -33,7 +24,7 @@ export function GroupStage() {
   useEffect(() => {
     setMounted(true);
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
+      const raw = localStorage.getItem(GROUP_ORDER_KEY);
       if (raw) {
         const saved = JSON.parse(raw) as { order: Order; touched: string[] };
         setOrder(saved.order);
@@ -49,7 +40,7 @@ export function GroupStage() {
     if (!mounted) return;
     try {
       localStorage.setItem(
-        STORAGE_KEY,
+        GROUP_ORDER_KEY,
         JSON.stringify({ order, touched: [...touched] })
       );
     } catch {
@@ -76,7 +67,7 @@ export function GroupStage() {
   }
 
   function reset() {
-    setOrder(initialOrder());
+    setOrder(defaultOrder());
     setTouched(new Set());
   }
 

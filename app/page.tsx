@@ -40,9 +40,7 @@ export default function Home() {
           </span>
 
           <h1 className="mx-auto mt-6 max-w-3xl font-display text-5xl font-extrabold leading-[0.98] tracking-tight text-ink sm:text-7xl">
-            Predict the 2026
-            <br />
-            tournament
+            Predict the 2026<br />tournament
           </h1>
 
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-ink-soft">
