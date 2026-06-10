@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Design tokens — taxonomy borrowed from the design-system canon:
+  surface -> text -> border/line -> accent -> semantic.
+  Nothing in this codebase hard-codes a hex; everything reads a var.
+  Change a value here and the whole site re-themes.
+*/
+:root {
+  /* Surface */
+  --paper: #f3f0e8;      /* page background (warm, distinct from generic white SaaS) */
+  --card: #fbfaf6;       /* cards, panels */
+  --line: #e4dfd2;       /* hairlines, borders */
+
+  /* Text */
+  --ink: #0e0e10;        /* primary text + headers (≈17:1 on paper) */
+  --ink-soft: #3a3a3e;   /* secondary body */
+  --muted: #6c6960;      /* captions, metadata */
+
+  /* Accent — WC nod (gold) + ownable football identity (pitch green) */
+  --gold: #d7a028;
+  --gold-deep: #a87a10;
+  --pitch: #0f7a4e;      /* primary actions */
+  --pitch-deep: #0b5c3a;
+
+  /* Semantic / data accents — used ONLY on flags + result states, never as UI chrome */
+  --flag-red: #d63d34;
+  --flag-blue: #2c66d6;
+
+  /* Body font: system stack (fast, no extra payload). Display loaded via next/font. */
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, "Noto Sans", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-feature-settings: "tnum" 1; /* tabular numerals everywhere — scoreboards don't jitter */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Display utility — the one characterful face that stops it reading as AI-built */
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+  letter-spacing: 0.005em;
+}
+
+/* Respect users who don't want motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* flag-icons sizing helper */
+.fi {
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
