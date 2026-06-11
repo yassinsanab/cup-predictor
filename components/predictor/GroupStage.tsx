@@ -6,6 +6,7 @@ import { GROUP_ORDER_KEY, defaultOrder, type Order } from "@/lib/prediction";
 import { GroupCard } from "./GroupCard";
 import { Button } from "@/components/ui/Button";
 import { saveNodeAsPng } from "@/lib/exportImage";
+import { track } from "@/lib/analytics";
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -26,9 +27,15 @@ export function GroupStage({ onGoToKnockout }: { onGoToKnockout?: () => void }) 
     if (!gridRef.current) return;
     try {
       await saveNodeAsPng(gridRef.current, "cup-predictor-groups.png");
+      track("share_image_saved", { scope: "groups" });
     } catch {
       alert("Could not generate the image — please try again.");
     }
+  }
+
+  function goKnockout() {
+    track("groups_completed");
+    onGoToKnockout?.();
   }
 
   // Load any saved prediction once on mount (guarded to avoid SSR mismatch).
@@ -114,7 +121,7 @@ export function GroupStage({ onGoToKnockout }: { onGoToKnockout?: () => void }) 
               Save image
             </Button>
             {done ? (
-              <Button variant="gold" size="md" arrow onClick={onGoToKnockout}>
+              <Button variant="gold" size="md" arrow onClick={goKnockout}>
                 Go to Knockout
               </Button>
             ) : (
@@ -177,7 +184,7 @@ export function GroupStage({ onGoToKnockout }: { onGoToKnockout?: () => void }) 
         <div className="mt-2 flex flex-wrap justify-center gap-3">
           <Button variant="gold" onClick={saveImage}>Save image</Button>
           {done && (
-            <Button variant="primary" arrow onClick={onGoToKnockout}>
+            <Button variant="primary" arrow onClick={goKnockout}>
               Continue to Knockout
             </Button>
           )}

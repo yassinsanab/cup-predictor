@@ -12,6 +12,7 @@ import {
 } from "@/lib/bracket";
 import { Button } from "@/components/ui/Button";
 import { saveNodeAsPng } from "@/lib/exportImage";
+import { track } from "@/lib/analytics";
 import { ShareCard } from "./ShareCard";
 
 const ROUND_ORDER: Round[] = ["R32", "R16", "QF", "SF", "3P", "F"];
@@ -122,6 +123,7 @@ export function KnockoutStage() {
     if (!node) return;
     try {
       await saveNodeAsPng(node, name);
+      track("share_image_saved", { scope: name.includes("bracket") ? "all" : "round" });
     } catch {
       alert("Could not generate the image — please try again.");
     }
@@ -131,6 +133,17 @@ export function KnockoutStage() {
   const runnerUp = built.results[104]?.loser ?? null;
   const thirdPlace = built.results[103]?.winner ?? null;
   const thirdsReady = thirds.length === 8;
+
+  // Fire a conversion once a champion is crowned (re-armed if the bracket is cleared).
+  const firedComplete = useRef(false);
+  useEffect(() => {
+    if (champion && !firedComplete.current) {
+      firedComplete.current = true;
+      track("bracket_completed", { champion: champion.code });
+    } else if (!champion) {
+      firedComplete.current = false;
+    }
+  }, [champion]);
 
   if (!mounted) {
     return <div className="py-20 text-center text-sm text-muted">Loading your bracket…</div>;
