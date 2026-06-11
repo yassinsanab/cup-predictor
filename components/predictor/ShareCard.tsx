@@ -126,7 +126,7 @@ export const ShareCard = forwardRef<HTMLDivElement, Props>(function ShareCard(
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 18 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <Trophy size={26} />
-          <span style={{ fontSize: 24, fontWeight: 900, color: C.ink, letterSpacing: -0.5 }}>Cup Predictor &rsquo;26</span>
+          <span style={{ fontSize: 24, fontWeight: 900, color: C.ink, letterSpacing: -0.5 }}>PlayMatchPool</span>
         </div>
         <div style={{ fontSize: 14, fontWeight: 700, color: C.goldDeep }}>
           World Cup 2026 <span style={{ color: C.muted, fontWeight: 600 }}>· USA · Canada · Mexico</span>
@@ -235,7 +235,7 @@ export const ShareCard = forwardRef<HTMLDivElement, Props>(function ShareCard(
       <div style={{ marginTop: 24, borderTop: `1px solid ${C.line}`, paddingTop: 16, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <span style={{ fontSize: 12, color: C.muted }}>Independent fan project · not affiliated with FIFA.</span>
         <span style={{ display: "inline-flex", alignItems: "center", gap: 9, background: C.ink, color: C.paper, borderRadius: 999, padding: "8px 18px", fontSize: 13, fontWeight: 700 }}>
-          <span style={{ color: C.gold }}>Cup Predictor &rsquo;26</span>
+          <span style={{ color: C.gold }}>PlayMatchPool</span>
           <span style={{ opacity: 0.55 }}>playmatchpool.com</span>
         </span>
       </div>

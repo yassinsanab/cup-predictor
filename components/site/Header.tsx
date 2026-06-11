@@ -28,7 +28,7 @@ export function Header() {
             </svg>
           </span>
           <span className="font-display text-lg font-extrabold tracking-tight text-ink">
-            World&nbsp;Cup<span className="text-gold">&nbsp;26</span>
+            PlayMatch<span className="text-gold">Pool</span>
           </span>
         </Link>
 

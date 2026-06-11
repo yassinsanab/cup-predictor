@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/Button";
 import { saveNodeAsPng } from "@/lib/exportImage";
 import { track } from "@/lib/analytics";
+import { SupportModal } from "./SupportModal";
 import { ShareCard } from "./ShareCard";
 
 const ROUND_ORDER: Round[] = ["R32", "R16", "QF", "SF", "3P", "F"];
@@ -32,6 +33,7 @@ export function KnockoutStage() {
   const [thirds, setThirds] = useState<string[]>([]);
   const [picks, setPicks] = useState<Record<number, string>>({});
   const [mounted, setMounted] = useState(false);
+  const [showSupport, setShowSupport] = useState(false);
 
   const allRef = useRef<HTMLDivElement | null>(null);
   const shareRef = useRef<HTMLDivElement | null>(null);
@@ -123,7 +125,9 @@ export function KnockoutStage() {
     if (!node) return;
     try {
       await saveNodeAsPng(node, name);
-      track("share_image_saved", { scope: name.includes("bracket") ? "all" : "round" });
+      const scope = name.includes("bracket") ? "all" : "round";
+      track("share_image_saved", { scope });
+      if (scope === "all" && built.results[104]?.winner) setShowSupport(true);
     } catch {
       alert("Could not generate the image — please try again.");
     }
@@ -261,7 +265,7 @@ export function KnockoutStage() {
         </div>
         <p className="max-w-md text-sm text-ink-soft">
           {champion
-            ? "Save your bracket as an image and share it — backend leagues come next."
+            ? "Save your bracket as an image and share it with your friends."
             : "Work down to the final to crown a winner, or hit Shuffle all. Picks are kept on this device."}
         </p>
         <div className="mt-2 flex flex-wrap justify-center gap-3">
@@ -276,6 +280,15 @@ export function KnockoutStage() {
       <div aria-hidden style={{ position: "fixed", left: 0, top: 0, width: 0, height: 0, overflow: "hidden", pointerEvents: "none", zIndex: -1 }}>
         <ShareCard ref={shareRef} order={order} thirds={thirds} results={built.results} />
       </div>
+
+      {showSupport && (
+        <SupportModal
+          champion={champion}
+          runnerUp={runnerUp}
+          third={thirdPlace}
+          onClose={() => setShowSupport(false)}
+        />
+      )}
     </div>
   );
 }
@@ -283,7 +296,7 @@ export function KnockoutStage() {
 function Watermark() {
   return (
     <div className="export-only mt-4 flex items-center justify-between gap-3 border-t border-line pt-3 text-[11px] text-muted">
-      <span className="font-display font-extrabold text-ink">Cup Predictor &rsquo;26</span>
+      <span className="font-display font-extrabold text-ink">PlayMatchPool</span>
       <span>playmatchpool.com · Independent fan project, not affiliated with FIFA</span>
     </div>
   );

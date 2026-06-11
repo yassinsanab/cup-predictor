@@ -3,6 +3,7 @@ import Link from "next/link";
 import { POSTS } from "@/content/posts";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/blog" },
   title: "Blog — World Cup 2026 guides & explainers",
   description:
     "Guides and explainers for the 2026 World Cup: the new 48-team format, the Round of 32, the groups, and how to fill in your bracket.",

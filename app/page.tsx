@@ -1,5 +1,21 @@
+import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { GROUPS, FORMAT } from "@/lib/teams";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
+
+const SITE_JSONLD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebSite", name: "PlayMatchPool", url: "https://www.playmatchpool.com" },
+    {
+      "@type": "Organization",
+      name: "PlayMatchPool",
+      url: "https://www.playmatchpool.com",
+      logo: "https://www.playmatchpool.com/icon.svg",
+    },
+  ],
+};
 
 const STATS = [
   { n: "48", l: "Teams" },
@@ -17,6 +33,7 @@ const STEPS = [
 export default function Home() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SITE_JSONLD) }} />
       {/* HERO — editorial, asymmetric, type-led */}
       <section className="mx-auto max-w-shell px-5 pt-14 sm:px-8 sm:pt-20">
         <div className="grid items-center gap-10 lg:grid-cols-12">

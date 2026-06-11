@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "About",
   description:
-    "Cup Predictor '26 is a free, no-sign-up tool to predict the 2026 World Cup — rank the groups, fill the bracket, and share it.",
+    "PlayMatchPool is a free, no-sign-up tool to predict the 2026 World Cup — rank the groups, fill the bracket, and share it.",
 };
 
 export default function AboutPage() {
@@ -14,7 +15,7 @@ export default function AboutPage() {
 
       <div className="mt-7 space-y-5 text-[15px] leading-relaxed text-ink-soft">
         <p>
-          Cup Predictor &apos;26 is a free tool for calling the 2026 World Cup before it
+          PlayMatchPool is a free tool for calling the 2026 World Cup before it
           happens. Rank all 12 groups, choose the eight best third-placed teams, then play
           out every knockout tie to the final — and export a clean image of your whole
           bracket to share.

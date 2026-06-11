@@ -1,7 +1,10 @@
 export type Block =
   | { t: "p"; text: string }
   | { t: "h2"; text: string }
-  | { t: "ul"; items: string[] };
+  | { t: "ul"; items: string[] }
+  | { t: "table"; headers: string[]; rows: (string | number)[][]; caption?: string }
+  | { t: "bars"; items: { label: string; value: number; note?: string }[]; unit?: string; caption?: string }
+  | { t: "stats"; items: { value: string; label: string }[] };
 
 export type Post = {
   slug: string;
@@ -188,6 +191,263 @@ export const POSTS: Post[] = [
       { t: "h2", text: "Why it matters" },
       { t: "p", text: "More nations means more first-timers and more unpredictability, and the new Round of 32 means finishing third in your group can still be enough. It also means a longer, denser schedule for fans to follow." },
       { t: "p", text: "New to the format? The full explainer walks through how teams advance — then put it into practice on the predictor." },
+    ],
+  },
+  {
+    slug: "world-cup-winners-list",
+    title: "Every World Cup winner since 1930: the full list",
+    description:
+      "A complete table of every FIFA World Cup winner, runner-up and host from 1930 to 2022 — sortable by year, champion or host.",
+    date: "2026-06-10",
+    body: [
+      { t: "p", text: "Twenty-two World Cups have been played since 1930, and only eight nations have ever lifted the trophy. Here is the complete roll of champions, runners-up and hosts — tap any column header to sort it." },
+      { t: "table", caption: "FIFA World Cup finals, 1930–2022",
+        headers: ["Year", "Winner", "Runner-up", "Host"],
+        rows: [
+          [1930, "Uruguay", "Argentina", "Uruguay"],
+          [1934, "Italy", "Czechoslovakia", "Italy"],
+          [1938, "Italy", "Hungary", "France"],
+          [1950, "Uruguay", "Brazil", "Brazil"],
+          [1954, "West Germany", "Hungary", "Switzerland"],
+          [1958, "Brazil", "Sweden", "Sweden"],
+          [1962, "Brazil", "Czechoslovakia", "Chile"],
+          [1966, "England", "West Germany", "England"],
+          [1970, "Brazil", "Italy", "Mexico"],
+          [1974, "West Germany", "Netherlands", "West Germany"],
+          [1978, "Argentina", "Netherlands", "Argentina"],
+          [1982, "Italy", "West Germany", "Spain"],
+          [1986, "Argentina", "West Germany", "Mexico"],
+          [1990, "West Germany", "Argentina", "Italy"],
+          [1994, "Brazil", "Italy", "USA"],
+          [1998, "France", "Brazil", "France"],
+          [2002, "Brazil", "Germany", "Korea/Japan"],
+          [2006, "Italy", "France", "Germany"],
+          [2010, "Spain", "Netherlands", "South Africa"],
+          [2014, "Germany", "Argentina", "Brazil"],
+          [2018, "France", "Croatia", "Russia"],
+          [2022, "Argentina", "France", "Qatar"],
+        ] },
+      { t: "p", text: "Will a 48-team field finally add a ninth name to this list? Make your call on the bracket predictor." },
+    ],
+  },
+  {
+    slug: "world-cup-most-titles-by-country",
+    title: "Most World Cup titles by country",
+    description:
+      "Which countries have won the most World Cups? Brazil lead with five. The full breakdown of titles by nation, with the years they won.",
+    date: "2026-06-10",
+    body: [
+      { t: "p", text: "Eight nations have shared all 22 World Cups between them. Brazil sit clear at the top with five stars on the shirt." },
+      { t: "bars", unit: "", caption: "World Cup titles won (1930–2022)",
+        items: [
+          { label: "Brazil", value: 5 },
+          { label: "Germany / West Germany", value: 4 },
+          { label: "Italy", value: 4 },
+          { label: "Argentina", value: 3 },
+          { label: "France", value: 2 },
+          { label: "Uruguay", value: 2 },
+          { label: "England", value: 1 },
+          { label: "Spain", value: 1 },
+        ] },
+      { t: "table", caption: "Titles and the years won",
+        headers: ["Country", "Titles", "Years won"],
+        rows: [
+          ["Brazil", 5, "1958, 1962, 1970, 1994, 2002"],
+          ["Germany", 4, "1954, 1974, 1990, 2014"],
+          ["Italy", 4, "1934, 1938, 1982, 2006"],
+          ["Argentina", 3, "1978, 1986, 2022"],
+          ["France", 2, "1998, 2018"],
+          ["Uruguay", 2, "1930, 1950"],
+          ["England", 1, "1966"],
+          ["Spain", 1, "2010"],
+        ] },
+    ],
+  },
+  {
+    slug: "most-world-cup-appearances",
+    title: "Teams with the most World Cup appearances",
+    description:
+      "Brazil are the only country to play at every World Cup. The nations with the most finals tournament appearances through 2022.",
+    date: "2026-06-09",
+    body: [
+      { t: "p", text: "Brazil hold a record no one else can match: they have appeared at every single World Cup. Here are the most frequent participants through 2022 — sort by appearances to see the order." },
+      { t: "table", caption: "World Cup finals appearances, through 2022",
+        headers: ["Team", "Appearances"],
+        rows: [
+          ["Brazil", 22],
+          ["Germany", 20],
+          ["Italy", 18],
+          ["Argentina", 18],
+          ["Mexico", 17],
+          ["Spain", 16],
+          ["England", 16],
+          ["France", 16],
+          ["Uruguay", 14],
+          ["Belgium", 14],
+        ] },
+      { t: "p", text: "With the field expanding to 48 teams in 2026, expect several nations to make their tournament debut and climb these counts in the years ahead." },
+    ],
+  },
+  {
+    slug: "world-cup-golden-boot-history",
+    title: "World Cup Golden Boot winners: recent history",
+    description:
+      "Who won the World Cup Golden Boot at each recent tournament, and how many goals it took. From Schillaci in 1990 to Mbappé in 2022.",
+    date: "2026-06-09",
+    body: [
+      { t: "p", text: "The Golden Boot goes to the tournament's top scorer. Tallies have hovered between five and eight goals for decades — here are the winners since 1990." },
+      { t: "table", caption: "World Cup Golden Boot, 1990–2022",
+        headers: ["Year", "Player", "Country", "Goals"],
+        rows: [
+          [2022, "Kylian Mbappé", "France", 8],
+          [2018, "Harry Kane", "England", 6],
+          [2014, "James Rodríguez", "Colombia", 6],
+          [2010, "Thomas Müller", "Germany", 5],
+          [2006, "Miroslav Klose", "Germany", 5],
+          [2002, "Ronaldo", "Brazil", 8],
+          [1998, "Davor Šuker", "Croatia", 6],
+          [1994, "Oleg Salenko / Hristo Stoichkov", "Russia / Bulgaria", 6],
+          [1990, "Salvatore Schillaci", "Italy", 6],
+        ] },
+      { t: "p", text: "It usually takes around six goals to win it — a useful benchmark if you are picking a top scorer for 2026." },
+    ],
+  },
+  {
+    slug: "biggest-world-cup-wins",
+    title: "The biggest wins in World Cup history",
+    description:
+      "The most lopsided scorelines ever recorded at a World Cup, from Hungary's double-digit rout to Germany's famous 7-1 over Brazil.",
+    date: "2026-06-08",
+    body: [
+      { t: "p", text: "World Cups usually reward tight margins, but a handful of matches turned into routs. These are among the biggest victories the tournament has seen." },
+      { t: "table", caption: "Notable record scorelines",
+        headers: ["Match", "Score", "Year"],
+        rows: [
+          ["Hungary – El Salvador", "10–1", 1982],
+          ["Hungary – South Korea", "9–0", 1954],
+          ["Yugoslavia – Zaire", "9–0", 1974],
+          ["Sweden – Cuba", "8–0", 1938],
+          ["Uruguay – Bolivia", "8–0", 1950],
+          ["Germany – Saudi Arabia", "8–0", 2002],
+          ["Portugal – North Korea", "7–0", 2010],
+          ["Germany – Brazil", "7–1", 2014],
+        ] },
+      { t: "p", text: "The 2014 semi-final stands apart: a 7–1 against the host nation remains the most shocking of them all." },
+    ],
+  },
+  {
+    slug: "host-nation-world-cup-record",
+    title: "How often does the host nation win the World Cup?",
+    description:
+      "Six host nations have won the World Cup on home soil. The full record, and what it might mean for the USA, Mexico and Canada in 2026.",
+    date: "2026-06-08",
+    body: [
+      { t: "p", text: "Playing at home has historically been a real edge. Six of the 22 World Cups have been won by the host nation." },
+      { t: "stats", items: [
+        { value: "6", label: "Hosts won" },
+        { value: "27%", label: "Of tournaments" },
+        { value: "22", label: "World Cups" },
+        { value: "3", label: "Hosts in 2026" },
+      ] },
+      { t: "table", caption: "Host nations that won at home",
+        headers: ["Year", "Host & champion"],
+        rows: [
+          [1930, "Uruguay"],
+          [1934, "Italy"],
+          [1966, "England"],
+          [1974, "West Germany"],
+          [1978, "Argentina"],
+          [1998, "France"],
+        ] },
+      { t: "p", text: "2026 has three hosts for the first time — the USA, Mexico and Canada. History says at least one of them should fancy a deep run." },
+    ],
+  },
+  {
+    slug: "world-cup-2026-confederation-breakdown",
+    title: "World Cup 2026: where the 48 teams come from",
+    description:
+      "How the 48 World Cup 2026 places are split between confederations — Europe, Africa, Asia, South America and beyond.",
+    date: "2026-06-07",
+    body: [
+      { t: "p", text: "The jump to 48 teams gave every confederation more places. Here is how the field breaks down by region." },
+      { t: "bars", unit: " slots", caption: "Confederation places in the 48-team field",
+        items: [
+          { label: "UEFA (Europe)", value: 16, note: "33%" },
+          { label: "CAF (Africa)", value: 9, note: "19%" },
+          { label: "AFC (Asia)", value: 8, note: "17%" },
+          { label: "CONMEBOL (S. America)", value: 6, note: "13%" },
+          { label: "CONCACAF (N. America)", value: 6, note: "13%" },
+          { label: "Inter-confederation play-off", value: 2, note: "4%" },
+          { label: "OFC (Oceania)", value: 1, note: "2%" },
+        ] },
+      { t: "p", text: "Africa and Asia are the biggest winners from expansion, gaining places that should bring more first-time and returning nations to the tournament." },
+    ],
+  },
+  {
+    slug: "world-cup-2026-by-the-numbers",
+    title: "World Cup 2026 by the numbers",
+    description:
+      "The headline figures for the 2026 World Cup: 48 teams, 104 matches, 16 cities, three host nations and more.",
+    date: "2026-06-07",
+    body: [
+      { t: "p", text: "The biggest World Cup ever, in a single glance." },
+      { t: "stats", items: [
+        { value: "48", label: "Teams" },
+        { value: "12", label: "Groups" },
+        { value: "104", label: "Matches" },
+        { value: "16", label: "Host cities" },
+        { value: "3", label: "Host nations" },
+        { value: "39", label: "Days" },
+        { value: "32", label: "Reach knockouts" },
+        { value: "1", label: "Champion" },
+      ] },
+      { t: "p", text: "It runs 11 June to 19 July 2026 across the USA, Canada and Mexico, with the final at MetLife Stadium in New York/New Jersey. Follow it on the scores page and call it on the predictor." },
+    ],
+  },
+  {
+    slug: "world-cup-format-history",
+    title: "How the World Cup grew from 13 teams to 48",
+    description:
+      "The World Cup has expanded several times since 1930. A look at how the number of teams and matches changed on the way to 2026's 48-team format.",
+    date: "2026-06-06",
+    body: [
+      { t: "p", text: "The 2026 expansion to 48 teams is the latest in a long line of growth spurts. Sort by teams or matches to see how the tournament ballooned." },
+      { t: "table", caption: "Key expansions in World Cup format",
+        headers: ["Year", "Teams", "Matches", "Format"],
+        rows: [
+          [1930, 13, 18, "Groups + knockout"],
+          [1934, 16, 17, "Straight knockout"],
+          [1982, 24, 52, "Two group stages"],
+          [1998, 32, 64, "8 groups of 4"],
+          [2026, 48, 104, "12 groups + Round of 32"],
+        ] },
+      { t: "p", text: "From 18 matches in 1930 to 104 in 2026 — almost six times as much football. The new Round of 32 is the structural change that makes the 48-team field work." },
+    ],
+  },
+  {
+    slug: "world-cup-2026-group-strength-ranking",
+    title: "Ranking all 12 World Cup 2026 groups by strength",
+    description:
+      "Which 2026 World Cup group is the toughest? Our subjective, for-fun strength rating of all 12 groups from A to L.",
+    date: "2026-06-05",
+    body: [
+      { t: "p", text: "Purely for fun, here is our subjective take on how tough each 2026 group looks on paper. It is an opinion, not a prediction — rank them yourself on the predictor and see if you agree." },
+      { t: "bars", unit: "/100", caption: "Subjective group-strength rating (higher = tougher)",
+        items: [
+          { label: "Group I — France, Senegal, Norway, Iraq", value: 92 },
+          { label: "Group L — England, Croatia, Panama, Ghana", value: 84 },
+          { label: "Group E — Germany, Ecuador, Côte d'Ivoire, Curaçao", value: 80 },
+          { label: "Group H — Spain, Uruguay, Saudi Arabia, Cape Verde", value: 79 },
+          { label: "Group C — Brazil, Morocco, Scotland, Haiti", value: 77 },
+          { label: "Group F — Netherlands, Japan, Tunisia, Sweden", value: 74 },
+          { label: "Group K — Portugal, Colombia, Uzbekistan, DR Congo", value: 73 },
+          { label: "Group G — Belgium, Iran, Egypt, New Zealand", value: 70 },
+          { label: "Group J — Argentina, Austria, Algeria, Jordan", value: 66 },
+          { label: "Group D — USA, Paraguay, Australia, Türkiye", value: 64 },
+          { label: "Group A — Mexico, South Korea, South Africa, Czechia", value: 61 },
+          { label: "Group B — Canada, Switzerland, Qatar, Bosnia & Herzegovina", value: 59 },
+        ] },
+      { t: "p", text: "Group I — France and Senegal alongside Erling Haaland's Norway — tops our list as the standout Group of Death." },
     ],
   },
 ];

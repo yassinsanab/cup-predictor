@@ -5,6 +5,8 @@ import "flag-icons/css/flag-icons.min.css";
 import "./globals.css";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
+import { CookieConsent } from "@/components/site/CookieConsent";
+import { BuyMeCoffeeWidget } from "@/components/site/BuyMeCoffeeWidget";
 
 // next/font self-hosts at build time — no runtime CDN call.
 // Condensed grotesque for display = athletic, editorial, unmistakably sport.
@@ -24,13 +26,13 @@ const body = Barlow({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.playmatchpool.com"),
   title: {
-    default: "Cup Predictor '26 — World Cup 2026 Bracket Predictor",
-    template: "%s · Cup Predictor '26",
+    default: "PlayMatchPool — World Cup 2026 Bracket Predictor",
+    template: "%s · PlayMatchPool",
   },
   description:
     "Free 2026 World Cup bracket predictor. Rank all 48 teams from the group stage to the final, pick the eight best third-placed teams, and share your bracket as an image. No sign-up.",
   openGraph: {
-    title: "Cup Predictor '26 — Build your 2026 bracket",
+    title: "PlayMatchPool — Build your 2026 bracket",
     description:
       "Rank all 48 teams, fill the knockout bracket to the final, and share it. No sign-up, done in two minutes.",
     type: "website",
@@ -46,8 +48,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main>{children}</main>
         <Footer />
+        <CookieConsent />
+        <BuyMeCoffeeWidget />
 
-        {/* Google Analytics (gtag.js) */}
+        {/* Google Analytics (gtag.js) with Consent Mode v2 */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-XQXSD007E2"
           strategy="afterInteractive"
@@ -55,6 +59,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script id="ga-gtag" strategy="afterInteractive">
           {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  ad_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+  analytics_storage: 'denied',
+  wait_for_update: 500
+});
 gtag('js', new Date());
 gtag('config', 'G-XQXSD007E2');`}
         </Script>
