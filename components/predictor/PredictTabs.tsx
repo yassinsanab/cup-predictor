@@ -1,11 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GroupStage } from "./GroupStage";
 import { KnockoutStage } from "./KnockoutStage";
+import { SupportModal } from "./SupportModal";
+import type { Team } from "@/lib/teams";
+
+type SavedDetail = { champion?: Team | null; runnerUp?: Team | null; third?: Team | null };
 
 export function PredictTabs() {
   const [tab, setTab] = useState<"group" | "knockout">("group");
+  const [saved, setSaved] = useState<SavedDetail | null>(null);
+
+  // Any image save anywhere in the predictor dispatches "pmp:saved" → show the modal.
+  useEffect(() => {
+    const onSaved = (e: Event) => setSaved((e as CustomEvent<SavedDetail>).detail ?? {});
+    window.addEventListener("pmp:saved", onSaved);
+    return () => window.removeEventListener("pmp:saved", onSaved);
+  }, []);
+
   return (
     <>
       <div className="mb-7 flex justify-center">
@@ -32,6 +45,15 @@ export function PredictTabs() {
       </div>
 
       {tab === "group" ? <GroupStage onGoToKnockout={() => setTab("knockout")} /> : <KnockoutStage />}
+
+      {saved && (
+        <SupportModal
+          champion={saved.champion ?? null}
+          runnerUp={saved.runnerUp ?? null}
+          third={saved.third ?? null}
+          onClose={() => setSaved(null)}
+        />
+      )}
     </>
   );
 }

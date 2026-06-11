@@ -28,6 +28,7 @@ export function GroupStage({ onGoToKnockout }: { onGoToKnockout?: () => void }) 
     try {
       await saveNodeAsPng(gridRef.current, "cup-predictor-groups.png");
       track("share_image_saved", { scope: "groups" });
+      window.dispatchEvent(new CustomEvent("pmp:saved", { detail: {} }));
     } catch {
       alert("Could not generate the image — please try again.");
     }

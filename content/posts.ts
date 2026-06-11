@@ -450,6 +450,197 @@ export const POSTS: Post[] = [
       { t: "p", text: "Group I — France and Senegal alongside Erling Haaland's Norway — tops our list as the standout Group of Death." },
     ],
   },
+  {
+    slug: "world-cup-all-time-top-scorers",
+    title: "World Cup all-time top scorers",
+    description:
+      "The leading goalscorers in World Cup history, from Miroslav Klose's record 16 down. A sortable table through the 2022 tournament.",
+    date: "2026-06-11",
+    body: [
+      { t: "p", text: "Only one player has reached 16 World Cup goals. Here are the all-time leading scorers across every tournament through 2022 — tap a column to sort." },
+      { t: "table", caption: "Most World Cup goals (through 2022)",
+        headers: ["Player", "Country", "Goals"],
+        rows: [
+          ["Miroslav Klose", "Germany", 16],
+          ["Ronaldo", "Brazil", 15],
+          ["Gerd Müller", "West Germany", 14],
+          ["Just Fontaine", "France", 13],
+          ["Lionel Messi", "Argentina", 13],
+          ["Pelé", "Brazil", 12],
+          ["Kylian Mbappé", "France", 12],
+          ["Sándor Kocsis", "Hungary", 11],
+          ["Jürgen Klinsmann", "Germany", 11],
+        ] },
+      { t: "p", text: "Two of the top names — Messi and Mbappé — are still active, so 2026 could reshuffle this list at the very top." },
+    ],
+  },
+  {
+    slug: "confederations-world-cup-titles",
+    title: "Which confederation has won the most World Cups?",
+    description:
+      "Every World Cup has been won by either Europe or South America. The title count by confederation, and what it means for 2026.",
+    date: "2026-06-04",
+    body: [
+      { t: "p", text: "In 22 tournaments, the trophy has never left two continents. Europe and South America have shared every single World Cup between them." },
+      { t: "bars", unit: " titles", caption: "World Cup titles by confederation (1930–2022)",
+        items: [
+          { label: "UEFA (Europe)", value: 12, note: "55%" },
+          { label: "CONMEBOL (South America)", value: 10, note: "45%" },
+          { label: "All other confederations", value: 0, note: "0%" },
+        ] },
+      { t: "p", text: "No team from Africa, Asia, North America or Oceania has reached a final. With expansion to 48 teams in 2026, plenty of fans are hoping that finally changes." },
+    ],
+  },
+  {
+    slug: "teams-never-won-world-cup",
+    title: "The best teams never to win the World Cup",
+    description:
+      "Netherlands, Hungary, Croatia and more — the strongest sides to reach a final or go deep without ever lifting the trophy.",
+    date: "2026-06-03",
+    body: [
+      { t: "p", text: "Some great footballing nations have come agonisingly close without ever winning it all. Here are the most notable, with their best finish." },
+      { t: "table", caption: "Best result without a title",
+        headers: ["Team", "Best result"],
+        rows: [
+          ["Netherlands", "Runner-up ×3"],
+          ["Hungary", "Runner-up ×2"],
+          ["Czechoslovakia", "Runner-up ×2"],
+          ["Croatia", "Runner-up (2018)"],
+          ["Sweden", "Runner-up (1958)"],
+          ["Belgium", "Third (1986, 2018)"],
+          ["Portugal", "Third (1966)"],
+          ["Mexico", "Quarter-finals"],
+        ] },
+      { t: "p", text: "The Netherlands are the unwanted record-holders: three finals, three defeats. Could 2026 finally end one of these waits?" },
+    ],
+  },
+  {
+    slug: "world-cup-hosts-history",
+    title: "Every World Cup host nation since 1930",
+    description:
+      "A complete list of World Cup hosts from Uruguay 1930 to the three-nation 2026 tournament in the USA, Canada and Mexico.",
+    date: "2026-06-03",
+    body: [
+      { t: "p", text: "The World Cup has criss-crossed the globe since 1930. Here is every host — note 2026 is the first shared by three countries." },
+      { t: "table", caption: "World Cup hosts, 1930–2026",
+        headers: ["Year", "Host"],
+        rows: [
+          [1930, "Uruguay"], [1934, "Italy"], [1938, "France"], [1950, "Brazil"],
+          [1954, "Switzerland"], [1958, "Sweden"], [1962, "Chile"], [1966, "England"],
+          [1970, "Mexico"], [1974, "West Germany"], [1978, "Argentina"], [1982, "Spain"],
+          [1986, "Mexico"], [1990, "Italy"], [1994, "USA"], [1998, "France"],
+          [2002, "Korea/Japan"], [2006, "Germany"], [2010, "South Africa"], [2014, "Brazil"],
+          [2018, "Russia"], [2022, "Qatar"], [2026, "USA / Canada / Mexico"],
+        ] },
+      { t: "p", text: "Mexico becomes the first nation to host (or co-host) three times. Follow all 104 matches on the scores page." },
+    ],
+  },
+  {
+    slug: "biggest-upsets-world-cup",
+    title: "The biggest upsets in World Cup history",
+    description:
+      "Saudi Arabia over Argentina, South Korea over Germany, the USA over England — the most famous shocks the World Cup has produced.",
+    date: "2026-06-02",
+    body: [
+      { t: "p", text: "The World Cup loves a giant-killing. These are some of the most famous upsets the tournament has ever seen." },
+      { t: "table", caption: "Famous World Cup shocks",
+        headers: ["Match", "Score", "Year"],
+        rows: [
+          ["Saudi Arabia – Argentina", "2–1", 2022],
+          ["South Korea – Germany", "2–0", 2018],
+          ["Senegal – France", "1–0", 2002],
+          ["Cameroon – Argentina", "1–0", 1990],
+          ["Algeria – West Germany", "2–1", 1982],
+          ["North Korea – Italy", "1–0", 1966],
+          ["USA – England", "1–0", 1950],
+        ] },
+      { t: "p", text: "Argentina recovered from their 2022 shock to win the whole thing — proof that one bad result need not define a tournament." },
+    ],
+  },
+  {
+    slug: "world-cup-2026-final",
+    title: "World Cup 2026 final: date and venue",
+    description:
+      "When and where is the 2026 World Cup final? Everything known about the showpiece at MetLife Stadium on 19 July 2026.",
+    date: "2026-06-11",
+    body: [
+      { t: "p", text: "The 2026 World Cup final will be played on Sunday 19 July 2026 at MetLife Stadium in East Rutherford, New Jersey, just outside New York City." },
+      { t: "h2", text: "The venue" },
+      { t: "p", text: "MetLife Stadium is one of the largest venues at the tournament, seating around 82,000. It usually hosts the NFL's Giants and Jets, and will stage the World Cup's biggest night." },
+      { t: "h2", text: "The road there" },
+      { t: "p", text: "To reach it, a team must win four knockout rounds after the group stage: the Round of 32, Round of 16, quarter-final and semi-final. Play it all out on the predictor and crown your champion." },
+    ],
+  },
+  {
+    slug: "world-cup-2026-opening-match",
+    title: "World Cup 2026 opening match: when and where",
+    description:
+      "The 2026 World Cup kicks off on 11 June with co-hosts Mexico at the iconic Estadio Azteca in Mexico City.",
+    date: "2026-06-11",
+    body: [
+      { t: "p", text: "The 2026 World Cup begins on Thursday 11 June 2026, and tradition holds: a host nation gets the opening game." },
+      { t: "h2", text: "Mexico at the Azteca" },
+      { t: "p", text: "Co-hosts Mexico open the tournament at the legendary Estadio Azteca in Mexico City — the only stadium to have staged two previous World Cup finals (1970 and 1986). It is a fitting place to start the biggest World Cup yet." },
+      { t: "p", text: "From that first whistle, 104 matches run across 39 days to the final on 19 July. Check kickoff times on the scores page." },
+    ],
+  },
+  {
+    slug: "world-cup-2026-round-of-32-explained",
+    title: "World Cup 2026 Round of 32: how it works",
+    description:
+      "The 2026 World Cup introduces a Round of 32. Here's exactly which 32 teams qualify and how the new knockout round is built.",
+    date: "2026-06-10",
+    body: [
+      { t: "p", text: "For the first time, the World Cup knockouts begin with a Round of 32. Here is how those 32 places are filled from the 12 groups." },
+      { t: "stats", items: [
+        { value: "12", label: "Group winners" },
+        { value: "12", label: "Runners-up" },
+        { value: "8", label: "Best thirds" },
+        { value: "32", label: "Into the knockouts" },
+      ] },
+      { t: "p", text: "Every group's top two go through automatically, and the eight best third-placed teams complete the bracket. FIFA's official allocation table then decides which third-placed team is paired with which group winner, so no group rivals meet again too soon." },
+      { t: "p", text: "Our predictor applies that exact allocation for you — pick the eight third-placed teams and the Round of 32 lines up correctly." },
+    ],
+  },
+  {
+    slug: "how-many-matches-world-cup-2026",
+    title: "How many matches are at the World Cup 2026?",
+    description:
+      "The 2026 World Cup features 104 matches in total. Here's how that breaks down, and how many games a team plays to win it.",
+    date: "2026-06-10",
+    body: [
+      { t: "p", text: "The 48-team format means a lot more football: 104 matches in total, up from 64 at recent tournaments." },
+      { t: "stats", items: [
+        { value: "104", label: "Total matches" },
+        { value: "3", label: "Min per team" },
+        { value: "7", label: "Max per team" },
+        { value: "8", label: "Knockout rounds*" },
+      ] },
+      { t: "p", text: "Every team plays three group games. A side that goes all the way plays seven in total: three groups plus the Round of 32, Round of 16, quarter-final, semi-final and final. (*Counting the third-place play-off, there are six knockout match days across the bracket.)" },
+    ],
+  },
+  {
+    slug: "world-cup-2026-knockout-dates",
+    title: "World Cup 2026 knockout stage dates",
+    description:
+      "When each World Cup 2026 knockout round is played, from the Round of 32 in late June to the final on 19 July.",
+    date: "2026-06-10",
+    body: [
+      { t: "p", text: "After the group stage wraps up on 27 June, the 2026 World Cup goes straight into knockout football. Here is when each round is scheduled." },
+      { t: "table", caption: "2026 World Cup schedule by round",
+        headers: ["Round", "Dates"],
+        rows: [
+          ["Group stage", "11–27 June"],
+          ["Round of 32", "28 June – 3 July"],
+          ["Round of 16", "4–7 July"],
+          ["Quarter-finals", "9–11 July"],
+          ["Semi-finals", "14–15 July"],
+          ["Third-place play-off", "18 July"],
+          ["Final", "19 July"],
+        ] },
+      { t: "p", text: "Exact kickoff times, in your local timezone, are on the scores page as each round is confirmed." },
+    ],
+  },
 ];
 
 export function getPost(slug: string): Post | undefined {

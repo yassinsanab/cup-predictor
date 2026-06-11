@@ -13,7 +13,6 @@ import {
 import { Button } from "@/components/ui/Button";
 import { saveNodeAsPng } from "@/lib/exportImage";
 import { track } from "@/lib/analytics";
-import { SupportModal } from "./SupportModal";
 import { ShareCard } from "./ShareCard";
 
 const ROUND_ORDER: Round[] = ["R32", "R16", "QF", "SF", "3P", "F"];
@@ -33,7 +32,6 @@ export function KnockoutStage() {
   const [thirds, setThirds] = useState<string[]>([]);
   const [picks, setPicks] = useState<Record<number, string>>({});
   const [mounted, setMounted] = useState(false);
-  const [showSupport, setShowSupport] = useState(false);
 
   const allRef = useRef<HTMLDivElement | null>(null);
   const shareRef = useRef<HTMLDivElement | null>(null);
@@ -127,7 +125,9 @@ export function KnockoutStage() {
       await saveNodeAsPng(node, name);
       const scope = name.includes("bracket") ? "all" : "round";
       track("share_image_saved", { scope });
-      if (scope === "all" && built.results[104]?.winner) setShowSupport(true);
+      window.dispatchEvent(
+        new CustomEvent("pmp:saved", { detail: { champion, runnerUp, third: thirdPlace } })
+      );
     } catch {
       alert("Could not generate the image — please try again.");
     }
@@ -280,15 +280,6 @@ export function KnockoutStage() {
       <div aria-hidden style={{ position: "fixed", left: 0, top: 0, width: 0, height: 0, overflow: "hidden", pointerEvents: "none", zIndex: -1 }}>
         <ShareCard ref={shareRef} order={order} thirds={thirds} results={built.results} />
       </div>
-
-      {showSupport && (
-        <SupportModal
-          champion={champion}
-          runnerUp={runnerUp}
-          third={thirdPlace}
-          onClose={() => setShowSupport(false)}
-        />
-      )}
     </div>
   );
 }

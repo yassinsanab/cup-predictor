@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CoffeeButton } from "./CoffeeButton";
 
 export function Footer() {
   return (
@@ -14,14 +15,7 @@ export function Footer() {
               third-placed qualifiers, and every knockout tie. No sign-up, done
               in two minutes.
             </p>
-            <a
-              href="https://www.buymeacoffee.com/apoldi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 rounded-btn bg-gold px-4 py-2.5 text-sm font-bold text-ink transition-transform hover:-translate-y-0.5"
-            >
-              <CoffeeIcon /> Buy me a coffee
-            </a>
+            <CoffeeButton source="footer" />
           </div>
 
           <nav className="grid grid-cols-2 gap-x-12 gap-y-2 text-sm">
@@ -42,17 +36,5 @@ export function Footer() {
         </p>
       </div>
     </footer>
-  );
-}
-
-function CoffeeIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
-      <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" />
-      <line x1="6" y1="2" x2="6" y2="4" />
-      <line x1="10" y1="2" x2="10" y2="4" />
-      <line x1="14" y1="2" x2="14" y2="4" />
-    </svg>
   );
 }
